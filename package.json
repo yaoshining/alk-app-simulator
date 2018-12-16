@@ -1,0 +1,37 @@
+{
+  "name": "alk-app-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "dist": "build --tasks mac-x64 --mirror https://npm.taobao.org/mirrors/nwjs/ .",
+    "start": "run --x64 --mirror https://npm.taobao.org/mirrors/nwjs/ .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "inject_js_start": "bridge.js",
+  "webview": {
+    "partitions": [
+      {
+        "name": "trusted",
+        "accessible_resources": [
+          "<all_urls>"
+        ]
+      }
+    ]
+  },
+  "window": {
+    "width": 1280,
+    "height": 750,
+    "toolbar": true,
+    "frame": true
+  },
+  "build": {
+    "nwVersion": "0.31.1",
+    "nwFlavor": "sdk"
+  },
+  "author": "yaoshining",
+  "license": "MIT",
+  "devDependencies": {
+    "nwjs-builder-phoenix": "^1.14.8"
+  }
+}
