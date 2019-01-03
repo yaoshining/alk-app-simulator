@@ -6,6 +6,7 @@
   "scripts": {
     "dist": "build --tasks mac-x64 --mirror https://npm.taobao.org/mirrors/nwjs/ .",
     "start": "run --x64 --mirror https://npm.taobao.org/mirrors/nwjs/ .",
+    "build": "cross-env NODE_ENV=development node build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "inject_js_start": "bridge.js",
@@ -23,15 +24,26 @@
     "width": 1280,
     "height": 750,
     "toolbar": true,
-    "frame": true
+    "frame": true,
+    "icon": "/Users/shining3/Workspaces/MyProjects/alk-app-simulator2/app.icns"
   },
+  "chromium-args": "--load-extension='./node_modules/nw-vue-devtools/extension'",
   "build": {
     "nwVersion": "0.31.1",
-    "nwFlavor": "sdk"
+    "nwFlavor": "sdk",
+    "strippedProperties": [
+      "chromium-args"
+    ]
   },
   "author": "yaoshining",
   "license": "MIT",
   "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nw-builder": "^3.5.6",
+    "nw-vue-devtools": "^1.2.0",
     "nwjs-builder-phoenix": "^1.14.8"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
   }
 }

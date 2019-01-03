@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>App simulator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,11 +13,13 @@
             <input id="addressBar" type="text">
         </div>
     </header>
-    <div id="container" class="webview-container"></div>
+    <div id="container" class="webview-container">
+        <div id="leftContainer"></div>
+    </div>
     <script>
         const win = nw.Window.get();
         // win.showDevTools();
     </script>
-    <script src="index.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

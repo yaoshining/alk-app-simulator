@@ -43,9 +43,20 @@ body {
     flex-direction: row;
     flex: 1 1 auto;
 }
-#browser {
+#leftContainer {
     width: 40%;
     height: 100%;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#browser {
+    width: 375px;
+    height: 667px;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
 }
 
 #devtools {
