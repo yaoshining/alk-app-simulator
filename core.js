@@ -21,13 +21,21 @@ webview.src = 'about:blank'
 const devtoolsviewCommit = () => {
   devtools.removeEventListener('loadcommit', devtoolsviewCommit)
   webview.showDevTools(true, devtools)
+  webview.request.onBeforeSendHeaders.addListener(
+    (details) => {
+      let type = details.type
+      if(type === 'xmlhttprequest') {
+        // let requestHeaders = details.requestHeaders || []
+      }
+    }, { urls: ['<all_urls>'] }, ['blocking', 'requestHeaders']
+  )
   webview.request.onHeadersReceived.addListener(
     (details) => {
       let type = details.type
       if (type === 'xmlhttprequest') {
         let responseHeaders = details.responseHeaders || []
         responseHeaders.push({ name: 'Access-Control-Allow-Origin', value: "*" })
-        responseHeaders.push({ name: "Access-Control-Allow-Headers", value: "X-Requested-With, Content-Type" })
+        responseHeaders.push({ name: "Access-Control-Allow-Headers", value: "X-Requested-With, Content-Type, guest-token, user-token, timestamp" })
         responseHeaders.forEach(function(header) {
           if(header.name === 'Set-Cookie') {
             const newValue = header.value.replace('hd.weibo.com', 'localhost:8091')

@@ -1,5 +1,6 @@
 const path = require('path');
 const API = require(path.resolve('./api.js'));
+
 (function() {
     function isPromise(obj) {
         return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
@@ -29,4 +30,20 @@ const API = require(path.resolve('./api.js'));
     window._dsbridge = {
         call
     };
+
+    window.addEventListener("message", (event) => {
+        const msg = event.data;
+        if(msg.action == 'handleMessageFromNative') {
+            if(window._handleMessageFromNative) {
+                window._handleMessageFromNative(msg.data);
+            }
+        }
+        if(msg.action == 'login') {
+            API.showLogin();
+        }
+        if(msg.action == 'printUserInfo') {
+            console.log(API.getUser());
+        }
+    }, false);
+
 })(window);

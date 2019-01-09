@@ -44,6 +44,9 @@
     "nwjs-builder-phoenix": "^1.14.8"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "level-js": "^4.0.0",
+    "linvodb3": "^3.26.0",
+    "lowdb": "^1.0.0"
   }
 }
