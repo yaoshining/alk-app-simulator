@@ -95,6 +95,20 @@ featuresMenu.append(new nw.MenuItem({
   }
 }));
 featuresMenu.append(new nw.MenuItem({
+  label: '销售助手-广告在线清空过滤条件',
+  click: () => {
+    const db = low(adapter);
+    const data = JSON.stringify({});
+    const method = "filter";
+    const callbackId = ++callID;
+    const webview = document.getElementById('browser');
+    webview.contentWindow.postMessage({
+      action: 'handleMessageFromNative',
+      data: {method, callbackId, data}
+    }, '*');
+  }
+}));
+featuresMenu.append(new nw.MenuItem({
   label: '销售助手-h5创意过滤条件',
   click: () => {
     const db = low(adapter);
