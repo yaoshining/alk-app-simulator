@@ -22,7 +22,7 @@ var pages = [{
   path: '/article/view'
 }, {
   name: '案例底层页',
-  path: '/senior/senior?id=28776'
+  path: '/case/view?id=28776'
 }, {
   name: '专题底层页',
   path: '/topic/view?id=122'
