@@ -5,6 +5,8 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
+const origin = 'http://test.api.hd.weibo.com';
+
 axios.interceptors.response.use((res) => {
     if(res.data.guest_token) {
         db.set('guest_token', res.data.guest_token).write();
@@ -148,6 +150,19 @@ exports.showRelatedIndustry = function() {
 
 exports.goBack = function() {
     window.history.go(-1);
+}
+
+exports.showBlueV = function() {
+    console.group('showBlueV');
+    console.log('调用微博蓝v关注组件');
+    console.groupEnd('showBlueV');
+}
+
+exports.getAPIOrigin = function() {
+    console.group('getAPIOrigin');
+    console.log('返回当前的api域名为:', origin);
+    console.groupEnd('getAPIOrigin');
+    return origin;
 }
 
 exports['_dsb.dsinit'] = function() {
