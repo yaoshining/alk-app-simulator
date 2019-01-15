@@ -44,6 +44,9 @@ const API = require(path.resolve('./api.js'));
         if(msg.action == 'printUserInfo') {
             console.log(API.getUser());
         }
+        if(msg.action == 'goBack') {
+            console.log(API.getUser());
+        }
     }, false);
 
 })(window);

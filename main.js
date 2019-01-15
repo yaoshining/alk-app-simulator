@@ -122,6 +122,19 @@ featuresMenu.append(new nw.MenuItem({
     }, '*');
   }
 }));
+featuresMenu.append(new nw.MenuItem({
+  label: '返回上一页',
+  click: () => {
+    const data = JSON.stringify([]);
+    const method = "goBack";
+    const callbackId = ++callID;
+    const webview = document.getElementById('browser');
+    webview.contentWindow.postMessage({
+      action: 'handleMessageFromNative',
+      data: {method, callbackId, data}
+    }, '*');
+  }
+}));
 mb.append(new nw.MenuItem({
   label: '功能',
   submenu: featuresMenu
