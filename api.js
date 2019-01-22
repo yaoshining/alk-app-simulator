@@ -165,6 +165,22 @@ exports.getAPIOrigin = function() {
     return origin;
 }
 
+exports.showFilterButton = function(options) {
+    console.group('showFilterButton');
+    if(options.show) {
+        console.log('显示筛选按钮');
+    } else {
+        console.log('隐藏筛选按钮');
+    }
+    console.groupEnd('showFilterButton');
+}
+
+exports.collectData = function(options) {
+    console.group('collectData');
+    console.log('数据统计:', options);
+    console.groupEnd('collectData');
+}
+
 exports['_dsb.dsinit'] = function() {
     
 }
