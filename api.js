@@ -21,8 +21,9 @@ function request(options) {
     options.url = options.path;
     const defaultOptions = {
         url: '',
-        // baseURL: 'http://hd.weibo.com/case/mobapi/',
-        baseURL: 'http://test.api.hd.weibo.com/appapi/',
+        // baseURL: 'http://alk.hd.weibo.com/case/mobapi/',
+        // baseURL: 'http://test.api.hd.weibo.com/appapi/',
+        baseURL: 'http://hd.weibo.com/case/appapi/',
         method: 'GET',
         data: {},
         params: {},
@@ -67,16 +68,18 @@ exports.showLogin = function() {
         request({
             path: '/passport/login?phone=13888888888&code=8473'
         }).then((res) => {
-            console.log('登录成功', res);
-            if(res.errno == 0) {
-                currentUser = res.data;
-                db.set('userInfo', res.data).write();
-            }
-            console.timeEnd('showLogin');
-            console.groupEnd('showLogin');
-            resolve({
-                isSucceeded: true
-            });
+            setTimeout(function() {
+                console.log('登录成功', res);
+                if(res.errno == 0) {
+                    currentUser = res.data;
+                    db.set('userInfo', res.data).write();
+                }
+                console.timeEnd('showLogin');
+                console.groupEnd('showLogin');
+                resolve({
+                    isSucceeded: true
+                });
+            }, 1000);
         });
     });
 }
